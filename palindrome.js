@@ -23,34 +23,34 @@ console.log("enter string:");
   else{
     console.log("no")
   }
-  stdin.end()
+  stdin.destroy()
 });
 
 //case non case sensitive
-console.log("enter string:");
-  let stdin = process.openStdin()
-  stdin.addListener("data", (d) => {
-  var str = d.toString().trim()
-  var status = true
-  str = str.toLowerCase()
-  for(var i =0;i<str.length;i++){
-    if(str[i] == str[str.length-1-i]){
-      status = true;
-    }
-    else{
-      status = false;
-      break;
-    }
-  }
-
-  if(status == true ){
-    console.log("yes it palindrome")
-  }
-  else{
-    console.log("no")
-  }
-  stdin.end()
-});
+// console.log("enter string:");
+//   let stdin = process.openStdin()
+//   stdin.addListener("data", (d) => {
+//   var str = d.toString().trim()
+//   var status = true
+//   str = str.toLowerCase()
+//   for(var i =0;i<str.length;i++){
+//     if(str[i] == str[str.length-1-i]){
+//       status = true;
+//     }
+//     else{
+//       status = false;
+//       break;
+//     }
+//   }
+//
+//   if(status == true ){
+//     console.log("yes it palindrome")
+//   }
+//   else{
+//     console.log("no")
+//   }
+//   stdin.end()
+// });
 
 
 
