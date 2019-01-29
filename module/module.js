@@ -3,33 +3,54 @@ var grade = require('./avg.js')
 var bbmi = require('./bmi.js')
 var cD = require('./degee.js')
 var primeEiEi = require('./ckPrimeNumber.js')
+var i = 1,base,score,cel,wight,heigh
 
-console.log("Program1:table");
-dt.table(25);
-console.log("/---------------------------------------/");
-console.log();
+let stdin = process.openStdin()
+console.log("enter b:");
 
-console.log("Program2:AvgerageGrade");
-//blank for stdin
-console.log("Your grade is " +grade.calAvg(47))
-console.log("/---------------------------------------/");
-console.log();
+stdin.addListener( "data", (value) => {
+    
+    if(i === 1){
+        
+        base = value
+        dt.table(base)
+        console.log("/------------------------------");
+        console.log('enter your total score :');
+    
+    }
+    else if(i==2){
+        score = value
+        console.log("Your grade is " +grade.calAvg(score))
+        console.log("/------------------------------");
+        console.log("Enter celsius degree:");
+   
+    }
+    else if(i==3){
+        cel = value
+        console.log("anthoer degree ->" + cD.convertDegee(cel) );
+        console.log("/------------------------------");
+       
+        console.log("enter your weight:");
+        
+    }
+    else if(i==4){
+        wight = value
+        console.log("enter your heigh:");
+        
+    }
+    else if(i==5){
+        heigh = value
+        console.log("your status :"+bbmi.bmi(wight,heigh));
+        console.log("/------------------------------");
+        console.log("enter number to check primeNubmer:");
+        
+    }
+    else if(i==6){
+        num = value
+        primeEiEi.gockPrime(num)
+        stdin.destroy()
+    }
+    i++
 
-console.log("Program3:BMI calculate")
-//blank for stdin
-console.log("Your status is "+bbmi.bmi(45,172));
-console.log("/---------------------------------------/");
-console.log();
-
-console.log("Program4:Degree Convertion")
-//blank for stdin
-console.log("AnotherDegree ::"+cD.convertDegee(25));
-console.log("/---------------------------------------/");
-console.log();
-
-
-console.log("Program5:Check primeNubmer")
-//blank for stdin
-console.log(primeEiEi.gockPrime(7));
-console.log("/---------------------------------------/");
-console.log();
+    
+})
