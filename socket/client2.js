@@ -1,8 +1,9 @@
 var net = require('net')
-var HOST = 'coc.waterphuket.com'
+var HOST = '127.0.0.1'
 var PORT = 6969
-var ans = 5
+var ans
 
+var stdin = process.openStdin()
 var client = new net.Socket()
 client.connect(PORT , HOST , () => {
     console.log('CONNECTED ! to :' + HOST + ':' + PORT)
@@ -11,22 +12,32 @@ client.connect(PORT , HOST , () => {
 
 client.on('data' , (data) => {
   console.log('DATA :' + data);
-  if(data == "OK"){
-    client.write(ans.toString())
-  }
-  else if(data == "WRONG"){
-    console.log("wrong answer");
-    client.write(ans.toString())
-  }
-  else if(data == "BINGO"){
-    console.log("YEEEE HAAAA");
-    console.log(ans);
-    client.destroy()
-  }
-  else if(data == "END"){
-    console.log("bye");
+    if(data == "OK"){
+      stdin.addListener("data",(value) => {
+        ans = value
+        client.write(ans)
+      })
+    }
+    else if(data == "NOPE"){
+      console.log("wrong answer");
+      // stdin.addListener("data",(value) => {
+      //   ans = value
+      //   client.write(ans)
+      // })
+    }
+    else if(data == "WIN"){
+      console.log("YEEEE HAAAA");
+      console.log(ans.toString().trim());
+      stdin.destroy()
       client.destroy()
+    }
+    else if(data == "KICK"){
+      console.log("bye");
+        stdin.destroy()
+        client.destroy()
+
   }
+
   ans++
 })
 
