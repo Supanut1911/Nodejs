@@ -1,0 +1,15 @@
+p {
+  background-color: grey;
+  color: text-color;
+  padding: 15px;
+}
+ul {
+  background-color: grey;
+}
+li {
+  color: #ddf;
+}
+h1 {
+  background-color: grey;
+  border: 2px solid red;
+}

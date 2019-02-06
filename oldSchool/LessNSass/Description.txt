@@ -1,0 +1,13 @@
+file .less is a file to become .css file
+
+in .less file can declare variable : use @varibale_name
+	
+	step 1 : declare variabel 
+
+	     2 : assign value of variable to style 
+
+	     3 : compile file .less 
+			using command : 1.cd to located
+					2.Lessc fileName.less > fileName.css
+
+	     4 : link css file to HTML file	
