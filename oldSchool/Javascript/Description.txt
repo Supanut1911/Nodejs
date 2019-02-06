@@ -1,0 +1,13 @@
+jQuery  === document.getElementsById()
+$
+
+# id
+. class
+
+$("").method
+
+method
+	- .text === .innerHTML
+	- window.onload = () => {
+		//statement	
+	  }
